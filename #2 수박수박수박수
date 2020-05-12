@@ -21,7 +21,7 @@ output: string answer
 
 1. for i: 1 ~ n/2, i++
     answer.add("수박")
-2. if: odd(n) 
+2. if: n.isOdd()
     answer.add("수")
 3. return answer
 
