@@ -1,0 +1,53 @@
+<문제>
+대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 'p'의 개수와 'y'의 개수를 비교해 같으면 True, 
+다르면 False를 return 하는 solution를 완성하세요. 'p', 'y' 모두 하나도 없는 경우는 항상 True를 리턴합니다. 
+단, 개수를 비교할 때 대문자와 소문자는 구별하지 않습니다.
+예를 들어 s가 pPoooyY면 true를 return하고 Pyy라면 false를 return합니다.
+
+<제한조건>
+문자열 s의 길이 : 50 이하의 자연수
+문자열 s는 알파벳으로만 이루어져 있습니다.
+
+<입출력 예>
+s	answer
+pPoooyY	true
+Pyy	false
+
+출처: https://programmers.co.kr/learn/courses/30/lessons/12916
+
+
+<의사코드>
+input: string s
+output: bool answer
+valuse: p : 문자열내 p의 개수
+        y : 문자열내 y의 개수
+
+1. for i: 1 ~ s.size(), i++
+    if s.at(i) == y or Y: y++
+    else if s.at(i) == p or P: p++
+2. if p==y: answer=true
+
+<C++코드>
+#include<iostream>
+#include <string>
+
+bool solution(string s)
+{
+	bool answer = false;
+	int cnt_p = 0, cnt_y = 0;
+
+	for (unsigned i = 0; i < s.size(); i++) {
+		if (s.at(i) == 'y' || s.at(i) == 'Y') cnt_y++;
+		else if(s.at(i) == 'p' || s.at(i) == 'P') cnt_p++;
+	}
+
+	if (cnt_p == cnt_y) answer = true;
+
+	return answer;
+}
+
+<노트>
+string.at(i)는 i번째 문자를 반환하는 string 함수다.
+따라서 for i문을 1~ size()만큼 돌려서
+반환하는 값이 해당 조건에 만족하는지 찾는다.
+성능은 O(n)이다.
