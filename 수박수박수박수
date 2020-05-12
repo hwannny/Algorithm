@@ -1,0 +1,46 @@
+<문제>
+길이가 n이고, 수박수박수박수....와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. 
+예를들어 n이 4이면 수박수박을 리턴하고 3이라면 수박수를 리턴하면 됩니다.
+
+<제한조건>
+n은 길이 10,000이하인 자연수입니다.
+
+<입출력 예시>
+n	return
+3	수박수
+4	수박수박
+
+<의사코드>
+input: int n
+output: string answer
+
+1. for i: 1 ~ n/2, i++
+    answer.add("수박")
+2. if: odd(n) 
+    answer.add("수")
+3. return answer
+
+<C++ 코드>
+#include <string>
+#include <vector>
+using namespace std;
+
+string solution(int n) {
+    string answer = "";
+    
+    for(int i=0;i<n/2;i++) answer += "수박"; 
+    if(n%2 ==1 ) answer += "수"; 
+    
+    return answer;
+}
+
+<노트>
+단순히 입력받은 n값까지 i의 홀,짝에따라 "수" 와 "박"을 추가하는 방향으로 해도 무방하다.
+하지만 그럴 경우은 시간 복잡도가 반드시 O(n)이 나온다.
+따라서 이러한 성능을 조금더 좋기 하기 위해서는 2/n 까지만 반복문을 돌릴수도 있다.
+
+
+왜냐하면 수와 박을 따로 더하는게 아니라 "수박"을 한꺼번에 더하기 때문이다.
+그리고 난휴 입력받은 n값이 홀수이면 마지막에 "수"를 더해주면 된다.
+
+따라서 기존의 성능보다 절반정도 더 좋은 성능이 나온다.
