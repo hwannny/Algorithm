@@ -1,0 +1,42 @@
+<문제 설명>
+단어 s의 가운데 글자를 반환하는 함수, solution을 만들어 보세요. 단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
+
+<제한사항>
+s는 길이가 1 이상, 100이하인 스트링입니다.
+
+<입출력 예>
+s	      return
+abcde   c
+qwer	  we
+
+출처: https://programmers.co.kr/learn/courses/30/lessons/12903
+
+
+<의사코드>
+input: string s
+input: string s
+output: string answer
+
+1. index = s.length / 2
+2. if s.length.isOdd(): return s[index]
+   else s.length.isEven():
+        answer.add(s[idx-1])
+        answer.add(s[idx])
+3. return answer
+
+<C++코드>
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+string solution(string s) {
+	string answer = "";
+	unsigned idx = s.length() / 2;
+	if (s.length() % 2 == 1) return answer += s[idx];
+	else {
+		answer += s[idx-1];
+		answer += s[idx];
+	}
+	return answer;
+}
